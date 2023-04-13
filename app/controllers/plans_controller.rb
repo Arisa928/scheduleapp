@@ -14,7 +14,7 @@ class PlansController < ApplicationController
        redirect_to :plans
      else
        flash[:notice] = "スケジュールの新規登録に失敗しました"
-       render "new"
+       render :new, status: :unprocessable_entity
      end
   end
   

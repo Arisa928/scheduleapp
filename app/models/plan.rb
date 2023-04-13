@@ -5,11 +5,9 @@ class Plan < ApplicationRecord
   validates :end_at,presence: true
   validate :start_end_check
     
-    def start_end_check
-      return false if end_at.blank? || start_at.blank?
-      if self.end_at < self.start_at
-       errors.add( "開始日より前の日付に登録できません。")
-      end
-    end
+  def start_end_check
+    return false if end_at.blank? || start_at.blank?
+    errors.add(:end_at, "は開始日より遅い日付にして下さい" )if self.start_at > self.end_at
+  end
     
 end

@@ -22,6 +22,8 @@ Rails.application.configure do
   #Blocked hostのエラーのため追加
   config.hosts.clear
   
+  config.web_console.allowed_ips = '0.0.0.0/0' #バリデーションエラーのため追加
+  
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join("tmp/caching-dev.txt").exist?

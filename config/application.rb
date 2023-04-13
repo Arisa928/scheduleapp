@@ -21,6 +21,7 @@ module Schedule
     
     #日時を日本時間にするため追加
     config.action_controller.permit_all_parameters = true
+    I18n.config.available_locales = :ja
     config.i18n.default_locale = :ja
     config.time_zone = 'Tokyo' 
 
