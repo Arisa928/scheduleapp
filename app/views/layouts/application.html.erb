@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Scheduleapp</title>
+    <title>Schedule</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,17 @@
   </head>
 
   <body>
+    <header>
+       <nav class="header-name">
+        <div class="header-container">
+        <p class="nav-text">
+        スケジュール管理アプリ
+        </p>
+        </div>
+      </nav>
+    </header>
+    
     <%= yield %>
+    
   </body>
 </html>

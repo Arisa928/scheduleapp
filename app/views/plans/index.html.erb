@@ -1,0 +1,57 @@
+<h3>予定一覧</h3>
+ 
+ <%# 新規登録した場合のリダイレクト %>
+ <% if flash[:notice] %>
+   <p class="notice"><%= flash[:notice] %></p>
+ <% end %>
+ 
+ <p><%= link_to "新規追加", :new_plan %></p>
+ 
+ <table>
+   <thead>
+     <tr>
+       <th>id</th>
+       <th>タイトル</th>
+       <th>開始日</th>
+       <th>終了日</th>
+       <th>終日</th>
+       <th>更新日時</th>
+     </tr>
+   </thead>
+ 
+   <tbody>
+     <% @plans.each do |plan| %>
+       <tr>
+         <td><%= plan.id %></td>
+         <td><%= plan.title %></td>
+         <td><%= plan.start_at.strftime('%Y/%m/%d') %></td>
+         <td><%= plan.end_at.strftime('%Y/%m/%d') %></td>
+         <% if plan.allday == true %>
+          <td>○</td>
+         <% else plan.allday == false %>
+          <td></td>
+         <% end %>
+         <td><%= plan.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
+         
+         <td>
+         <%= link_to "詳細", plan %>
+         </td>
+         <td>
+         <%= link_to "編集", [:edit, plan] %>
+         </td>
+         <td>
+         <%= link_to "削除", plan, data: {turbo_method: :delete, turbo_confirm: "本当に削除しますか？"} %>
+         </td>
+       </tr>
+     <% end %>
+   </tbody>
+   
+ </table>
+ 
+ <div class ="info">
+
+    <a class = "info-1"><%= "合計予定数：#{@plans.count}件" %></a>
+
+    <a class ="info-2"><%= "本日の日付：#{Date.today.strftime('%Y/%m/%d')}" %></a>
+
+  </div>

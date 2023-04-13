@@ -1,6 +1,8 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  # Verifies that versions and hashed value of the package contents in the project's package.json
+  config.webpacker.check_yarn_integrity = true
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time
@@ -17,6 +19,11 @@ Rails.application.configure do
   # Enable server timing
   config.server_timing = true
 
+  #Blocked hostのエラーのため追加
+  config.hosts.clear
+  
+  config.web_console.allowed_ips = '0.0.0.0/0' #バリデーションエラーのため追加
+  
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join("tmp/caching-dev.txt").exist?

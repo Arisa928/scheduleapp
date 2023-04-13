@@ -64,9 +64,15 @@ group :development do
   # gem "spring"
 end
 
+gem 'webpacker', '~> 3.0'
+gem 'rails-i18n'
+gem 'pry-rails'
+
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  
+  
 end
